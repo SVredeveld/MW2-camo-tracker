@@ -1,0 +1,23 @@
+{
+  "name": "mw2-camo-tracker",
+  "version": "1.0.0",
+  "description": "mw2 camo tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SVredeveld/MW2-camo-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SVredeveld/MW2-camo-tracker/issues"
+  },
+  "homepage": "https://github.com/SVredeveld/MW2-camo-tracker#readme",
+  "devDependencies": {
+    "tsc": "^2.0.4",
+    "typescript": "^4.8.4"
+  }
+}
