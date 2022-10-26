@@ -1,0 +1,45 @@
+{
+  "name": "MW2-camo-tracker",
+  "version": "1.0.0",
+  "description": "Camo tracker for the new MW2",
+  "main": "index.js",
+  "dependencies": {
+    "css-loader": "^6.7.1",
+    "eslint": "^8.26.0",
+    "html-webpack-plugin": "^5.5.0",
+    "node-sass": "^7.0.3",
+    "style-loader": "^3.3.1"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "eslint-webpack-plugin": "^3.2.0",
+    "live-server": "^1.2.2",
+    "mini-css-extract-plugin": "^2.6.1",
+    "npm-run-all": "^4.1.5",
+    "run-all": "^1.0.1",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.1.0",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.8.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "scripts": {
+    "start": "npm run bundle && npm-run-all --parallel watch serve",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "webpack",
+    "watch": "webpack --watch",
+    "serve": "cd dist && live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SVredeveld/MW2-camo-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SVredeveld/MW2-camo-tracker/issues"
+  },
+  "homepage": "https://github.com/SVredeveld/MW2-camo-tracker#readme"
+}

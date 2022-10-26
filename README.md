@@ -6,4 +6,4 @@ Camo tracker for the new MW2
 run `npm install`
 
 ## Build and live server
-run `npm start` 
+run `npm run start` 
