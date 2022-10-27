@@ -1,71 +1,75 @@
+import { getBaseChallengeForAR, getMasterChallengeForAR } from './challenges/challengesAR';
 import './style.scss';
+import { Challenge, ChallengeProgress, WeaponType } from './types';
+import { GetweaponCategories } from './weaponsFactory';
 
-let weapon_ar: string[] = ["stg", "volk", "scarrr", "newweapon"];
 
-interface Challenge {
-	description: string;
-	completed: boolean;
-}
-
-interface Weapon {
-	id: string;
-	name: string;
-	challenges: Challenge[];
-	completed: boolean;
-}
-
-function getWeaponId() {
-	return 'Random string';
-}
-
-function getChallengesByWeaponType(): Challenge {
+function getChallengesByWeaponType(type: WeaponType): ChallengeProgress {
 	return {
-		description: "test",
-		completed: true,
-	}
-}
-
-function addNewWeapon (name: string, type: string) {
-	return {
-		id: getWeaponId(),
-		name,
-		challenges: getChallengesByWeaponType()
+		baseChallenges: getBaseChallengesByWeaponType(type),
+		baseChallengesComplete: false,
+		masterChallenges: getMasterChallengesByWeaponType(type),
+		masterChallengesComplete: false
 	};
 }
 
-function CreateARs(weapon: string[]) {
-  const element= document.getElementById("weapons-list-ar");
-	
-  if (element) {
-		weapon.forEach(w => {
-			let arTitle = "ar-title-"+w;
-			element.innerHTML += `
-				<li id="${arTitle}"> 
-					${w}
-				</li>
+function getBaseChallengesByWeaponType(type: WeaponType): Challenge[] {
+	switch(type) {
+		case WeaponType.AR: return getBaseChallengeForAR();
+		case WeaponType.SMG: return getBaseChallengeForAR();
+		case WeaponType.SHOTGUN: return getBaseChallengeForAR();
+		default: return [];
+	}
+}
+
+function getMasterChallengesByWeaponType(type: WeaponType): Challenge[] {
+	switch(type) {
+		case WeaponType.AR: return getMasterChallengeForAR();
+		case WeaponType.SMG: return getMasterChallengeForAR();
+		case WeaponType.SHOTGUN: return getMasterChallengeForAR();
+		default: return [];
+	}
+}
+
+function CreateARs() {
+	const weaponsTableContainer = document.getElementById("weapons-table-container");
+	const weaponTableChallengeDescription = document.getElementById("weapon-table-challenge-description");
+
+	if(weaponsTableContainer) {
+		const weaponCategory = GetweaponCategories();
+		weaponCategory.forEach(category => {
+			weaponsTableContainer.innerHTML += 
+			`
+			<h4>${category.name}</h4>
 			`;
-			const title = document.getElementById(arTitle);
-			if(title) {
-				console.log(arTitle)
-				title.textContent = w;
-				CreateChallengeslist(arTitle);
-			}
-		});
+			category.weapons.forEach(weapon => {
+				weapon.challenges = getChallengesByWeaponType(category.type);
+				getChallengesByWeaponType(category.type);
+				console.log(weapon)
+				let html = 
+					`
+					<table>
+						<tr>
+							<td>${weapon.name}</td>
+					`;
 
-	
-  }
-}
+					weapon.challenges.baseChallenges.forEach(challenge => {
+						console.log(challenge.description);
+						html += 
+								`
+									<td>${challenge.description}</td>
+								`;				
+					})
+					html += 
+					
+					`</tr>
+					</table>
+					`;
+					weaponsTableContainer.innerHTML += html
+		})
+	})
+}}
 
-let challenges_ar: string[] = ["headshots", "longshots", "500 kills"]
-
-function CreateChallengeslist(title: string) {
- const element = document.getElementById(title);
- console.log(element)
-
- element?.innerHTML += `
-	<p>${challenges_ar}</p>
- `
-}
-CreateARs(weapon_ar);
+CreateARs();
 
 
