@@ -1,6 +1,8 @@
 import {
 	WeaponCategory,
-	WeaponType
+	WeaponType,
+	WeaponType_AR,
+	WeaponType_SMG
 } from "./types";
 
 export const GetweaponCategories = (): WeaponCategory[] => [
@@ -9,11 +11,11 @@ export const GetweaponCategories = (): WeaponCategory[] => [
 		type: WeaponType.AR,
 		weapons: [
 			{
-				name: "M4",
+				name: WeaponType_AR.M4,
 				completed: false
 			},
 			{
-				name: "TAC-Q",
+				name: WeaponType_AR.TAQ_Q,
 				completed: false
 			}
 		]
@@ -23,11 +25,11 @@ export const GetweaponCategories = (): WeaponCategory[] => [
 		type: WeaponType.SMG, 
 		weapons: [
 			{
-				name: "MP5",
+				name: WeaponType_SMG.MP5,
 				completed: false
 			},
 			{
-				name: "Firebird",
+				name: WeaponType_SMG.Firebird,
 				completed: false
 			}
 		]

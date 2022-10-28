@@ -18,3 +18,37 @@ body {
 	list-style: none;
 	margin: 1500px 0;
 }
+
+table {
+	width: 90%;
+	margin: auto;
+}
+tr td:first-child{
+	width: 30%;
+}
+
+
+
+.weapon-name {
+	width: 100px;
+	margin-top: 100px;
+	margin: auto;
+}
+td {
+	//border: 1px solid white;
+	height: 60px;
+
+	.btn {
+		cursor: pointer;
+		height: 100%;
+		width: 100%;
+		padding: 14px;
+		border-radius: 6px;
+		background-color: rgb(70, 70, 70);
+		color: $main-text;
+		&-mastery {
+			background-color: rgb(78, 78, 0);
+
+		}
+	}
+}
