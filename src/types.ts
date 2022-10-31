@@ -12,6 +12,12 @@ export interface Weapon {
 export enum WeaponType_AR {
 	M4 = "M4",
 	TAQ_Q = "TAC-Q",
+	Kastov762 = "Kastov-762",
+	Lachmann556 = "Lachmann-556",
+	STB556 = "STB-556",
+	M16 ="M16",
+	Kastov74u = "Kastov-74U",
+	Kastov545 ="Kastov-545"
 }
 export enum WeaponType_SMG {
 	MP5 = "MP5",
@@ -21,6 +27,7 @@ export enum WeaponType_SMG {
 export enum WeaponType {
 	AR = "AR" ,
 	SMG = "SMG",
+	BATTLERIFLE = "BATTLERIFLE",
 	SHOTGUN = "SHOTGUN"
 } 
 
