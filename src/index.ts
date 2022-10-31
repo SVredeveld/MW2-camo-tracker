@@ -30,8 +30,11 @@ function getMasterChallengesByWeaponType(type: WeaponType, weapon: Weapon): Chal
 		default: return [];
 	}
 }
-const btnClicker = (weapon: string) =>{
-	console.log(weapon);
+function btnClicker(weapon: Weapon, challenge: Challenge) {
+	console.log(challenge);
+	 var btn = document.getElementById(weapon.name + '-' + challenge.id)
+	 console.log(btn)
+	 if(btn?.style)btn.style.backgroundColor = 'white';
 }
 
  
@@ -41,39 +44,66 @@ function CreateARs() {
 	if(weaponsTableContainer) {
 		const weaponCategory = GetweaponCategories();
 		weaponCategory.forEach(category => {
-			let html = ``;
-			html += 
-			`
-			<h4>${category.name}</h4>
-			<table>
-			`;
+
+			var headerText = document.createElement('h4');
+			headerText.textContent = category.name;
+			weaponsTableContainer.appendChild(headerText)
+
+			var weaponsTable = document.createElement('table');
+			weaponsTableContainer.appendChild(weaponsTable)
+
 			category.weapons.forEach(weapon => {
 				weapon.challenges = getChallengesByWeaponType(category.type, weapon);
 				getChallengesByWeaponType(category.type, weapon);
-				let wwweapon = weapon;
-				html += 
-					`<tr>
-						<td class="weapon-name">${weapon.name}</td>`;
 
-					weapon.challenges.baseChallenges.forEach(challenge => {
-						html += 
-						`<td><input id="btn-challenge" type="button" value="${challenge.description}"class="btn"/></td>`;	
+				var weaponRow = document.createElement('tr');
+				var weaponName = document.createElement('td');
+				weaponName.textContent = weapon.name;
+
+				weaponRow.appendChild(weaponName);
+
+				weapon.challenges.baseChallenges.forEach(challenge => {
+					var baseWeaponChallengeData = document.createElement('td');
+					var baseWeaponChallenge = document.createElement('button');
+					baseWeaponChallenge.textContent = challenge.description;
+					baseWeaponChallenge.className = 'btn';
+					baseWeaponChallenge.id = weapon.name + '-' + challenge.id;
+					baseWeaponChallengeData.appendChild(baseWeaponChallenge);
+
+					baseWeaponChallenge.addEventListener('click', function() {
+						btnClicker(weapon, challenge);
 					})
-					
-					html += 
-					`</tr>
-					<tr> 
-						<td></td>`;
-						weapon.challenges.masterChallenges.forEach(challenge => {
-							html += 
-							`<td><button class="btn btn-mastery">${challenge.description}</button></td>
-							<tr><td></td></tr>`;	
-						})
+
+					weaponRow.appendChild(baseWeaponChallengeData);
 				})
-				weaponsTableContainer.innerHTML += html
+
+				var MasterWeaponRow = document.createElement('tr');
+
+				weapon.challenges.masterChallenges.forEach(challenge => {
+					var masterWeaponChallengeData = document.createElement('td');
+					var masterWeaponChallenge = document.createElement('button');
+					masterWeaponChallenge.textContent = challenge.description;
+					masterWeaponChallenge.className = 'btn btn-mastery';
+					masterWeaponChallengeData.appendChild(masterWeaponChallenge);
+
+					masterWeaponChallenge.addEventListener('click', function() {
+						btnClicker(weapon, challenge);
+				})
+				var masterWeaponChallengeDataSpacer = document.createElement('td');
+
+				MasterWeaponRow.appendChild(masterWeaponChallengeDataSpacer);
+				MasterWeaponRow.appendChild(masterWeaponChallengeData);
+
 			})
-		}
-	}
+			weaponsTable.appendChild(weaponRow);
+			weaponsTable.appendChild(MasterWeaponRow);
+			
+			var weaponRowSpacer = document.createElement('td');
+			weaponsTable.appendChild(weaponRowSpacer);
+		})
+	})
+}
+}
 
 
 

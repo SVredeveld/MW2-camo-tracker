@@ -1,4 +1,5 @@
 export interface Challenge {
+	id?: number;
 	description: string;
 	completed: boolean;
 }
