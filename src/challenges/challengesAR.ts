@@ -7,7 +7,7 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 				{
 					id: 0,
 					description: "Get x kills",
-					completed: false,
+					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
@@ -52,7 +52,7 @@ export function getMasterChallengeForAR(weapon: Weapon) {
 		case WeaponType_AR.M4: {
 			return [
 				{
-					id: 0,
+					id: 5,
 					description: "Get x master longshots",
 					completed: false,
 				},
@@ -77,5 +77,14 @@ export function getMasterChallengeForAR(weapon: Weapon) {
 				}, 
 			]
 		}
+	}
+}
+
+function getCompleted(weapon: Weapon, id: number) {
+	var bool = localStorage.getItem(weapon.name + '-' + id);
+	if(bool === null || bool == 'false') {
+		return false;
+	} else {
+		return true;
 	}
 }
