@@ -15,28 +15,44 @@ function getChallengesByWeaponType(type: WeaponType, weapon: Weapon): ChallengeP
 
 function getBaseChallengesByWeaponType(type: WeaponType, weapon: Weapon): Challenge[] {
 	switch(type) {
-		case WeaponType.WeaponType_AR: return getBaseChallengeForAR(weapon);
-		case WeaponType.WeaponType_SMG: return getBaseChallengeForAR(weapon);
-		case WeaponType.WeaponType_BattleRifle: return getBaseChallengeForAR(weapon);
+		case WeaponType.AR: return getBaseChallengeForAR(weapon);
+		case WeaponType.SMG: return getBaseChallengeForAR(weapon);
+		case WeaponType.BattleRifle: return getBaseChallengeForAR(weapon);
 		default: return [];
 	}
 }
 
 function getMasterChallengesByWeaponType(type: WeaponType, weapon: Weapon): Challenge[] {
 	switch(type) {
-		case WeaponType.WeaponType_AR: return getMasterChallengeForAR(weapon);
-		case WeaponType.WeaponType_SMG: return getMasterChallengeForAR(weapon);
-		case WeaponType.WeaponType_BattleRifle: return getMasterChallengeForAR(weapon);
+		case WeaponType.AR: return getMasterChallengeForAR(weapon);
+		case WeaponType.SMG: return getMasterChallengeForAR(weapon);
+		case WeaponType.BattleRifle: return getMasterChallengeForAR(weapon);
 		default: return [];
 	}
 }
+
 function btnClicker(weapon: Weapon, challenge: Challenge) {
 	console.log(challenge);
 	 var btn = document.getElementById(weapon.name + '-' + challenge.id)
-	 console.log(btn)
-	 if(btn?.style)btn.style.backgroundColor = 'white';
+	 challenge.completed = !challenge.completed;
+	 if(btn?.style) {
+		if(challenge.completed == true){
+			btn.style.background = 'url("img/checkmark.png") repeat 0 0';
+			btn.style.backgroundRepeat = 'no-repeat';
+			btn.style.backgroundSize = '40%';
+			btn.style.backgroundPosition = 'center';
+			btn.style.backgroundColor = '#272727'; 
+			btn.style.color = '##fefefe';
+			btn.style.opacity = '50%';
+		} 
+		else { 
+			btn.style.background = 'none';
+			btn.style.backgroundColor = '#454545';
+			btn.style.color = '#F1F1F1'; 
+			btn.style.opacity = '100%';
+		}
+	}
 }
-
  
 function CreateWeaponTables() {
 	const weaponsTableContainer = document.getElementById("weapons-table-container");
@@ -45,9 +61,11 @@ function CreateWeaponTables() {
 		const weaponCategory = GetweaponCategories();
 		weaponCategory.forEach(category => {
 
-			var headerText = document.createElement('h4');
+			var headerText = document.createElement('h3');
 			headerText.textContent = category.name;
-			weaponsTableContainer.appendChild(headerText)
+			headerText.id = "weapons-list-" + category.type;
+			headerText.className = "content";
+			weaponsTableContainer.appendChild(headerText);
 
 			var weaponsTable = document.createElement('table');
 			weaponsTableContainer.appendChild(weaponsTable)

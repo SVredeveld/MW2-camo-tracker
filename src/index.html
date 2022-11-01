@@ -6,17 +6,35 @@
 </head>
 <body>
 	<h1 class="header-text">MW<span>II</span> Camo Tracker</h1>
-	<div>
-		<a href="#weapons-list-ar" style="height: 500px;">AR</a>
-		<a href="#weapons-list-smg">SMG</a>
-		<a href="#weapons-list-sniper">SNIPER</a>
-		<a href="#weapons-list-shot">SHOTGUN</a>
-		<a href="#weapons-list-melee">MELEE</a>
+	<div id="navbar">
+		<a href="#weapons-list-ar">Assault Rifles</a>
+		<a href="#weapons-list-br">Battle Rifles</a>
+		<a href="#weapons-list-smg">Submachine guns</a>
+		<a href="#weapons-list-shot">Shotguns</a>
+		<a href="#weapons-list-lmg">Light Machine Guns</a>
+		<a href="#weapons-list-marks">Marksman Rifles</a>
+		<a href="#weapons-list-sniper">Sniper Rifles</a>
+		<a href="#weapons-list-gun">Handguns</a>
+		<a href="#weapons-list-launcher">Launchers</a>
+		<a href="#weapons-list-melee">Melee</a>
 	</div>
 
 	<div id="weapons-table-container">
 
-	</div>
+	</div><script>
+		window.onscroll = function() {myFunction()};
+		
+		var navbar = document.getElementById("navbar");
+		var sticky = navbar.offsetTop;
+		
+		function myFunction() {
+		  if (window.pageYOffset >= sticky) {
+			navbar.classList.add("sticky")
+		  } else {
+			navbar.classList.remove("sticky");
+		  }
+		}
+		</script>
 
 </body>
 </html>

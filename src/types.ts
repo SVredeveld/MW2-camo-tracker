@@ -24,9 +24,16 @@ export interface Weapon {
 }
 
 export enum WeaponType {
-	WeaponType_AR,
-	WeaponType_SMG,
-	WeaponType_BattleRifle
+	AR = "ar",
+	BattleRifle = "br",
+	SMG = "smg",
+	Shotgun = "shot",
+	LMG = "lmg",
+	Marksman = "marks",
+	Sniper = "sniper",
+	Handgun = "gun",
+	Launcher = "launcher",
+	Melee = "melee"	
 } 
 
 
