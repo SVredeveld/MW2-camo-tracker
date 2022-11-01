@@ -8,14 +8,14 @@ import {
 export const GetweaponCategories = (): WeaponCategory[] => [
 	{
 		name: 'Assault Rifles',
-		type: WeaponType.AR,
+		type: WeaponType.WeaponType_AR,
 		weapons: [
 			{
 				name: WeaponType_AR.M4,
 				completed: false
 			},
 			{
-				name: WeaponType_AR.TAQ_Q,
+				name: WeaponType_AR.TAQ_56,
 				completed: false
 			},
 			{
@@ -46,28 +46,28 @@ export const GetweaponCategories = (): WeaponCategory[] => [
 	},
 	{
 		name: 'Submachine Guns',
-		type: WeaponType.SMG, 
+		type: WeaponType.WeaponType_SMG, 
 		weapons: [
 			{
-				name: WeaponType_SMG.MP5,
+				name: WeaponType_SMG.VEL_46,
 				completed: false
 			},
 			{
-				name: WeaponType_SMG.Firebird,
+				name: WeaponType_SMG.Lachmann_sub,
 				completed: false
 			}
 		]
 	},
 	{
 		name: 'Battle Rifle',
-		type: WeaponType.BATTLERIFLE, 
+		type: WeaponType.WeaponType_BattleRifle, 
 		weapons: [
 			{
-				name: WeaponType_SMG.MP5,
+				name: WeaponType_SMG.FFS_Hurricane,
 				completed: false
 			},
 			{
-				name: WeaponType_SMG.Firebird,
+				name: WeaponType_SMG.Fennec_45,
 				completed: false
 			}
 		]

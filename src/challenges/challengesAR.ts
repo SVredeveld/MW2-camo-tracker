@@ -1,4 +1,4 @@
-import { WeaponType, Weapon, WeaponType_AR } from "../types"
+import { Weapon, WeaponType_AR } from "../types"
 
 export function getBaseChallengeForAR(weapon: Weapon) {
 	switch(weapon.name) {
@@ -26,7 +26,7 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 				},  
 			]
 		}
-		case WeaponType_AR.TAQ_Q: {
+		case WeaponType_AR.TAQ_56: {
 			return [
 				{
 					id: 0,
@@ -39,7 +39,7 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 			return [
 				{
 					id: 9,
-					description: "Get x kills",
+					description: "This challenge is currently unknown",
 					completed: false,
 				}, 
 			]
@@ -59,7 +59,7 @@ export function getMasterChallengeForAR(weapon: Weapon) {
 
 			]
 		}
-		case WeaponType_AR.TAQ_Q: {
+		case WeaponType_AR.TAQ_56: {
 			return [
 				{
 					id: 0,
@@ -72,7 +72,7 @@ export function getMasterChallengeForAR(weapon: Weapon) {
 			return [
 				{
 					id: 9,
-					description: "Get x master kills",
+					description: "This challenge is currently unknown",
 					completed: false,
 				}, 
 			]

@@ -15,18 +15,18 @@ function getChallengesByWeaponType(type: WeaponType, weapon: Weapon): ChallengeP
 
 function getBaseChallengesByWeaponType(type: WeaponType, weapon: Weapon): Challenge[] {
 	switch(type) {
-		case WeaponType.AR: return getBaseChallengeForAR(weapon);
-		case WeaponType.SMG: return getBaseChallengeForAR(weapon);
-		case WeaponType.SHOTGUN: return getBaseChallengeForAR(weapon);
+		case WeaponType.WeaponType_AR: return getBaseChallengeForAR(weapon);
+		case WeaponType.WeaponType_SMG: return getBaseChallengeForAR(weapon);
+		case WeaponType.WeaponType_BattleRifle: return getBaseChallengeForAR(weapon);
 		default: return [];
 	}
 }
 
 function getMasterChallengesByWeaponType(type: WeaponType, weapon: Weapon): Challenge[] {
 	switch(type) {
-		case WeaponType.AR: return getMasterChallengeForAR(weapon);
-		case WeaponType.SMG: return getMasterChallengeForAR(weapon);
-		case WeaponType.SHOTGUN: return getMasterChallengeForAR(weapon);
+		case WeaponType.WeaponType_AR: return getMasterChallengeForAR(weapon);
+		case WeaponType.WeaponType_SMG: return getMasterChallengeForAR(weapon);
+		case WeaponType.WeaponType_BattleRifle: return getMasterChallengeForAR(weapon);
 		default: return [];
 	}
 }
@@ -38,7 +38,7 @@ function btnClicker(weapon: Weapon, challenge: Challenge) {
 }
 
  
-function CreateARs() {
+function CreateWeaponTables() {
 	const weaponsTableContainer = document.getElementById("weapons-table-container");
 
 	if(weaponsTableContainer) {
@@ -88,35 +88,21 @@ function CreateARs() {
 
 					masterWeaponChallenge.addEventListener('click', function() {
 						btnClicker(weapon, challenge);
+					})
+					var masterWeaponChallengeDataSpacer = document.createElement('td');
+
+					MasterWeaponRow.appendChild(masterWeaponChallengeDataSpacer);
+					MasterWeaponRow.appendChild(masterWeaponChallengeData);
+
 				})
-				var masterWeaponChallengeDataSpacer = document.createElement('td');
-
-				MasterWeaponRow.appendChild(masterWeaponChallengeDataSpacer);
-				MasterWeaponRow.appendChild(masterWeaponChallengeData);
-
+				weaponsTable.appendChild(weaponRow);
+				weaponsTable.appendChild(MasterWeaponRow);
+				
+				var weaponRowSpacer = document.createElement('td');
+				weaponsTable.appendChild(weaponRowSpacer);
 			})
-			weaponsTable.appendChild(weaponRow);
-			weaponsTable.appendChild(MasterWeaponRow);
-			
-			var weaponRowSpacer = document.createElement('td');
-			weaponsTable.appendChild(weaponRowSpacer);
 		})
-	})
-}
-}
+	}
+};
 
-
-
-CreateARs();
-
-
-
-
-// const buttn = document.getElementById("btn");
-
-// buttn?.addEventListener('click', function handleClick(event) {
-// 	console.log('button clicked');
-// 	console.log(event);
-// 	console.log(event.target);
-//  });
-
+CreateWeaponTables();

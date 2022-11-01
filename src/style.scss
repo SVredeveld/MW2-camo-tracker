@@ -20,7 +20,7 @@ body {
 }
 
 table {
-	width: 90%;
+	width: 60%;
 	margin: auto;
 }
 tr td:first-child{
@@ -37,6 +37,7 @@ tr td:first-child{
 td {
 	//border: 1px solid white;
 	height: 40px;
+	width: 16%;
 
 	.btn {
 		cursor: pointer;
