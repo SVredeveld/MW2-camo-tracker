@@ -12,17 +12,17 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 				{
 					id: 1,
 					description: "Get x kills without reloading",
-					completed: false,
+					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
 					description: "Get x mounted",
-					completed: false,
+					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
 					description: "Get x hipfire",
-					completed: false,
+					completed: getCompleted(weapon, 3),
 				},  
 			]
 		}
@@ -31,7 +31,22 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 				{
 					id: 0,
 					description: "Get x kills",
-					completed: false,
+					completed: getCompleted(weapon, 0),
+				}, 
+				{
+					id: 1,
+					description: "???",
+					completed: getCompleted(weapon, 1),
+				}, 
+				{
+					id: 2,
+					description: "???",
+					completed: getCompleted(weapon, 2),
+				}, 
+				{
+					id: 3,
+					description: "???",
+					completed: getCompleted(weapon, 3),
 				}, 
 			]
 		}
@@ -40,7 +55,7 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 				{
 					id: 9,
 					description: "This challenge is currently unknown",
-					completed: false,
+					completed: getCompleted(weapon, 9),
 				}, 
 			]
 		}
@@ -52,9 +67,14 @@ export function getMasterChallengeForAR(weapon: Weapon) {
 		case WeaponType_AR.M4: {
 			return [
 				{
-					id: 5,
-					description: "Get x master longshots",
-					completed: false,
+					id: 6,
+					description: "GOLD",
+					completed: getCompleted(weapon, 6),
+				},
+				{
+					id: 7,
+					description: "PLAT",
+					completed: getCompleted(weapon, 7),
 				},
 
 			]
@@ -62,9 +82,9 @@ export function getMasterChallengeForAR(weapon: Weapon) {
 		case WeaponType_AR.TAQ_56: {
 			return [
 				{
-					id: 0,
+					id: 6,
 					description: "Get x master kills",
-					completed: false,
+					completed: getCompleted(weapon, 6),
 				}, 
 			]
 		}
@@ -73,7 +93,7 @@ export function getMasterChallengeForAR(weapon: Weapon) {
 				{
 					id: 9,
 					description: "This challenge is currently unknown",
-					completed: false,
+					completed: getCompleted(weapon, 9),
 				}, 
 			]
 		}

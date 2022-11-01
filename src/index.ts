@@ -31,7 +31,7 @@ function getMasterChallengesByWeaponType(type: WeaponType, weapon: Weapon): Chal
 	}
 }
 
-function changeButton(btn: HTMLElement) {
+function checkButton(btn: HTMLElement) {
 	btn.style.background = 'url("img/checkmark.png") repeat 0 0';
 			btn.style.backgroundRepeat = 'no-repeat';
 			btn.style.backgroundSize = '40%';
@@ -40,31 +40,32 @@ function changeButton(btn: HTMLElement) {
 			btn.style.opacity = '70%';
 }
 
+function setButtonColors(btn: HTMLElement, challenge: Challenge, mastery: boolean) {
+	if(btn?.style) {
+		if(challenge.completed == true)
+		 {
+			 console.log(challenge)
+			 checkButton(btn);
+			 var background = mastery ? '#2c2c00' : '#272727'; 
+			 btn.style.backgroundColor = background; 
 
+		 } 
+		 else { 				
+			 btn.style.background = 'none';
+			 var background = mastery ? '#4e4e00': '#454545' ; 
+			 btn.style.backgroundColor = background; 
+			 btn.style.color = '#F1F1F1'; 
+			 btn.style.opacity = '100%';
+		 }
+	 }
+}
 
 function btnClicker(weapon: Weapon, challenge: Challenge, mastery: boolean) {
-	 var btn = document.getElementById(weapon.name + '-' + challenge.id)
-	 console.log(challenge)
+	 var btn = document.getElementById(weapon.name + '-' + challenge.id)!
 	 challenge.completed = !challenge.completed;
 	 var localKeyString = weapon.name + '-' + challenge.id;
 	 window.localStorage.setItem(localKeyString, challenge.completed.toString())
-	 if(btn?.style) {
-		 if(challenge.completed == true)
-		  {
-				console.log(challenge)
-				changeButton(btn);
-				var background = mastery ? '#2c2c00' : '#272727'; 
-				btn.style.backgroundColor = background; 
-
-			} 
-			else { 				
-				btn.style.background = 'none';
-				var background = mastery ? '#4e4e00': '#454545' ; 
-				btn.style.backgroundColor = background; 
-				btn.style.color = '#F1F1F1'; 
-				btn.style.opacity = '100%';
-			}
-		}
+	setButtonColors(btn, challenge, mastery);
 	
 }
  
@@ -101,6 +102,7 @@ function CreateWeaponTables() {
 					baseWeaponChallenge.className = 'btn';
 					baseWeaponChallenge.id = weapon.name + '-' + challenge.id;
 					baseWeaponChallengeData.appendChild(baseWeaponChallenge);
+					setButtonColors(baseWeaponChallenge, challenge, false)
 
 					baseWeaponChallenge.addEventListener('click', function() {
 						btnClicker(weapon, challenge, false);
@@ -119,6 +121,8 @@ function CreateWeaponTables() {
 					masterWeaponChallenge.id = weapon.name + '-' + challenge.id;
 
 					masterWeaponChallengeData.appendChild(masterWeaponChallenge);
+					setButtonColors(masterWeaponChallenge, challenge, true)
+
 
 					masterWeaponChallenge.addEventListener('click', function() {
 						btnClicker(weapon, challenge, true);
