@@ -43,7 +43,7 @@ export const GetweaponCategories = (): WeaponCategory[] => [
 				completed: false
 			},
 			{
-				name: WeaponType_AR.Kastov545,
+				name: WeaponType_AR.Kastov74u,
 				completed: false
 			},
 			{

@@ -1,8 +1,8 @@
-import { Weapon, WeaponType_AR } from "../types"
+import { Weapon, WeaponType_SMG } from "../types"
 
-export function getBaseChallengeForAR(weapon: Weapon) {
+export function getBaseChallengeForSMG(weapon: Weapon) {
 	switch(weapon.name) {
-		case WeaponType_AR.M4: {
+		case WeaponType_SMG.VEL_46: {
 			return [
 				{
 					id: 0,
@@ -11,28 +11,28 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 				},
 				{
 					id: 1,
-					description: "Get x kills without reloading",
+					description: "???",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "Get x mounted",
+					description: "???",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "Get x hipfire",
+					description: "???",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
 		}
-		case WeaponType_AR.TAQ_56: {
+		case WeaponType_SMG.MX9: {
 			return [
 				{
 					id: 0,
 					description: "Get x kills",
 					completed: getCompleted(weapon, 0),
-				}, 
+				},
 				{
 					id: 1,
 					description: "???",
@@ -42,21 +42,21 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 					id: 2,
 					description: "???",
 					completed: getCompleted(weapon, 2),
-				}, 
+				},  
 				{
 					id: 3,
 					description: "???",
 					completed: getCompleted(weapon, 3),
-				}, 
+				},  
 			]
 		}
-		case WeaponType_AR.Kastov762: {
+		case WeaponType_SMG.Lachmann_sub: {
 			return [
 				{
 					id: 0,
 					description: "Get x kills",
 					completed: getCompleted(weapon, 0),
-				}, 
+				},
 				{
 					id: 1,
 					description: "???",
@@ -66,21 +66,21 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 					id: 2,
 					description: "???",
 					completed: getCompleted(weapon, 2),
-				}, 
+				},  
 				{
 					id: 3,
 					description: "???",
 					completed: getCompleted(weapon, 3),
-				}, 
+				},  
 			]
 		}
-		case WeaponType_AR.Lachmann556: {
+		case WeaponType_SMG.Vaznev_9K: {
 			return [
 				{
 					id: 0,
 					description: "Get x kills",
 					completed: getCompleted(weapon, 0),
-				}, 
+				},
 				{
 					id: 1,
 					description: "???",
@@ -90,21 +90,21 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 					id: 2,
 					description: "???",
 					completed: getCompleted(weapon, 2),
-				}, 
+				},  
 				{
 					id: 3,
 					description: "???",
 					completed: getCompleted(weapon, 3),
-				}, 
+				},  
 			]
 		}
-		case WeaponType_AR.STB556: {
+		case WeaponType_SMG.FFS_Hurricane: {
 			return [
 				{
 					id: 0,
 					description: "Get x kills",
 					completed: getCompleted(weapon, 0),
-				}, 
+				},
 				{
 					id: 1,
 					description: "???",
@@ -114,21 +114,45 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 					id: 2,
 					description: "???",
 					completed: getCompleted(weapon, 2),
-				}, 
+				},  
 				{
 					id: 3,
 					description: "???",
 					completed: getCompleted(weapon, 3),
+				},  
+			]
+		}		
+		case WeaponType_SMG.Minibak: {
+			return [
+				{
+					id: 0,
+					description: "Get x kills",
+					completed: getCompleted(weapon, 0),
+				},
+				{
+					id: 1,
+					description: "???",
+					completed: getCompleted(weapon, 1),
 				}, 
+				{
+					id: 2,
+					description: "???",
+					completed: getCompleted(weapon, 2),
+				},  
+				{
+					id: 3,
+					description: "???",
+					completed: getCompleted(weapon, 3),
+				},  
 			]
 		}
-		case WeaponType_AR.M16: {
+		case WeaponType_SMG.PDSW_528: {
 			return [
 				{
 					id: 0,
 					description: "Get x kills",
 					completed: getCompleted(weapon, 0),
-				}, 
+				},
 				{
 					id: 1,
 					description: "???",
@@ -138,21 +162,21 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 					id: 2,
 					description: "???",
 					completed: getCompleted(weapon, 2),
-				}, 
+				},  
 				{
 					id: 3,
 					description: "???",
 					completed: getCompleted(weapon, 3),
-				}, 
+				},  
 			]
 		}
-		case WeaponType_AR.Kastov74u: {
+		case WeaponType_SMG.Fennec_45: {
 			return [
 				{
 					id: 0,
 					description: "Get x kills",
 					completed: getCompleted(weapon, 0),
-				}, 
+				},
 				{
 					id: 1,
 					description: "???",
@@ -162,37 +186,15 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 					id: 2,
 					description: "???",
 					completed: getCompleted(weapon, 2),
-				}, 
+				},  
 				{
 					id: 3,
 					description: "???",
 					completed: getCompleted(weapon, 3),
-				}, 
-			]
-		}		case WeaponType_AR.Kastov545: {
-			return [
-				{
-					id: 0,
-					description: "Get x kills",
-					completed: getCompleted(weapon, 0),
-				}, 
-				{
-					id: 1,
-					description: "???",
-					completed: getCompleted(weapon, 1),
-				}, 
-				{
-					id: 2,
-					description: "???",
-					completed: getCompleted(weapon, 2),
-				}, 
-				{
-					id: 3,
-					description: "???",
-					completed: getCompleted(weapon, 3),
-				}, 
+				},  
 			]
 		}
+
 		default: {
 			return [
 				{
@@ -205,9 +207,9 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 	}
 }
 
-export function getMasterChallengeForAR(weapon: Weapon) {
+export function getMasterChallengeForSMG(weapon: Weapon) {
 	switch(weapon.name) {
-		case WeaponType_AR.M4: {
+		case WeaponType_SMG.VEL_46: {
 			return [
 				{
 					id: 6,
@@ -219,107 +221,107 @@ export function getMasterChallengeForAR(weapon: Weapon) {
 					description: "PLAT",
 					completed: getCompleted(weapon, 7),
 				},
+			]
+		}
+		case WeaponType_SMG.MX9: {
+			return [
+				{
+					id: 6,
+					description: "GOLD",
+					completed: getCompleted(weapon, 6),
+				},
+				{
+					id: 7,
+					description: "PLAT",
+					completed: getCompleted(weapon, 7),
+				},
+			]
+		}
+		case WeaponType_SMG.Lachmann_sub: {
+			return [
+				{
+					id: 6,
+					description: "GOLD",
+					completed: getCompleted(weapon, 6),
+				},
+				{
+					id: 7,
+					description: "PLAT",
+					completed: getCompleted(weapon, 7),
+				},
+			]
+		}
+		case WeaponType_SMG.Vaznev_9K: {
+			return [
+				{
+					id: 6,
+					description: "GOLD",
+					completed: getCompleted(weapon, 6),
+				},
+				{
+					id: 7,
+					description: "PLAT",
+					completed: getCompleted(weapon, 7),
+				},
+			]
+		}
+		case WeaponType_SMG.FFS_Hurricane: {
+			return [
+				{
+					id: 6,
+					description: "GOLD",
+					completed: getCompleted(weapon, 6),
+				},
+				{
+					id: 7,
+					description: "PLAT",
+					completed: getCompleted(weapon, 7),
+				},
+			]
+		}
+		case WeaponType_SMG.Minibak: {
+			return [
+				{
+					id: 6,
+					description: "GOLD",
+					completed: getCompleted(weapon, 6),
+				},
+				{
+					id: 7,
+					description: "PLAT",
+					completed: getCompleted(weapon, 7),
+				},
+			]
+		}
+		case WeaponType_SMG.PDSW_528: {
+			return [
+				{
+					id: 6,
+					description: "GOLD",
+					completed: getCompleted(weapon, 6),
+				},
+				{
+					id: 7,
+					description: "PLAT",
+					completed: getCompleted(weapon, 7),
+				},
+			]
+		}
+		case WeaponType_SMG.Fennec_45: {
+			return [
+				{
+					id: 6,
+					description: "GOLD",
+					completed: getCompleted(weapon, 6),
+				},
+				{
+					id: 7,
+					description: "PLAT",
+					completed: getCompleted(weapon, 7),
+				},
+			]
+		}
 
-			]
-		}
-		case WeaponType_AR.TAQ_56: {
-			return [
-				{
-					id: 6,
-					description: "GOLD",
-					completed: getCompleted(weapon, 6),
-				},
-				{
-					id: 7,
-					description: "PLAT",
-					completed: getCompleted(weapon, 7),
-				},
-			]
-		}
-		case WeaponType_AR.Kastov762: {
-			return [
-				{
-					id: 6,
-					description: "GOLD",
-					completed: getCompleted(weapon, 6),
-				},
-				{
-					id: 7,
-					description: "PLAT",
-					completed: getCompleted(weapon, 7),
-				},
-			]
-		}
-		case WeaponType_AR.Lachmann556: {
-			return [
-				{
-					id: 6,
-					description: "GOLD",
-					completed: getCompleted(weapon, 6),
-				},
-				{
-					id: 7,
-					description: "PLAT",
-					completed: getCompleted(weapon, 7),
-				},
-			]
-		}
-		case WeaponType_AR.STB556: {
-			return [
-				{
-					id: 6,
-					description: "GOLD",
-					completed: getCompleted(weapon, 6),
-				},
-				{
-					id: 7,
-					description: "PLAT",
-					completed: getCompleted(weapon, 7),
-				},
-			]
-		}
-		case WeaponType_AR.M16: {
-			return [
-				{
-					id: 6,
-					description: "GOLD",
-					completed: getCompleted(weapon, 6),
-				},
-				{
-					id: 7,
-					description: "PLAT",
-					completed: getCompleted(weapon, 7),
-				},
-			]
-		}
-		case WeaponType_AR.Kastov74u: {
-			return [
-				{
-					id: 6,
-					description: "GOLD",
-					completed: getCompleted(weapon, 6),
-				},
-				{
-					id: 7,
-					description: "PLAT",
-					completed: getCompleted(weapon, 7),
-				},
-			]
-		}
-		case WeaponType_AR.Kastov545: {
-			return [
-				{
-					id: 6,
-					description: "GOLD",
-					completed: getCompleted(weapon, 6),
-				},
-				{
-					id: 7,
-					description: "PLAT",
-					completed: getCompleted(weapon, 7),
-				},
-			]
-		}
 		default: {
 			return [
 				{

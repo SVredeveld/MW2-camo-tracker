@@ -1,6 +1,13 @@
 import { getBaseChallengeForAR, getMasterChallengeForAR } from './challenges/challengesAR';
+import { getBaseChallengeForBR, getMasterChallengeForBR } from './challenges/challengesBR';
+import { getBaseChallengeForHangun, getMasterChallengeForHangun } from './challenges/challengesHandgun';
+import { getBaseChallengeForLMG, getMasterChallengeForLMG } from './challenges/challengesLMG';
+import { getBaseChallengeForMarksman, getMasterChallengeForMarksman } from './challenges/challengesMarksman';
+import { getBaseChallengeForShotgun, getMasterChallengeForShotgun } from './challenges/challengesShotgun';
+import { getBaseChallengeForSMG, getMasterChallengeForSMG } from './challenges/challengesSMG';
+import { getBaseChallengeForSniper, getMasterChallengeForSniper } from './challenges/challengesSniper';
 import './style.scss';
-import { Challenge, ChallengeProgress, Weapon, WeaponType } from './types';
+import { Challenge, ChallengeProgress, Weapon, WeaponType, WeaponType_BattleRifle, WeaponType_LMG } from './types';
 import { GetweaponCategories } from './weaponsFactory';
 
 
@@ -16,8 +23,13 @@ function getChallengesByWeaponType(type: WeaponType, weapon: Weapon): ChallengeP
 function getBaseChallengesByWeaponType(type: WeaponType, weapon: Weapon): Challenge[] {
 	switch(type) {
 		case WeaponType.AR: return getBaseChallengeForAR(weapon);
-		case WeaponType.SMG: return getBaseChallengeForAR(weapon);
-		case WeaponType.BattleRifle: return getBaseChallengeForAR(weapon);
+		case WeaponType.BattleRifle: return getBaseChallengeForBR(weapon);
+		case WeaponType.SMG: return getBaseChallengeForSMG(weapon);
+		case WeaponType.Shotgun: return getBaseChallengeForShotgun(weapon);
+		case WeaponType.LMG: return getBaseChallengeForLMG(weapon);
+		case WeaponType.Marksman: return getBaseChallengeForMarksman(weapon);
+		case WeaponType.Sniper: return getBaseChallengeForSniper(weapon);
+		case WeaponType.Handgun: return getBaseChallengeForHangun(weapon);
 		default: return [];
 	}
 }
@@ -25,8 +37,13 @@ function getBaseChallengesByWeaponType(type: WeaponType, weapon: Weapon): Challe
 function getMasterChallengesByWeaponType(type: WeaponType, weapon: Weapon): Challenge[] {
 	switch(type) {
 		case WeaponType.AR: return getMasterChallengeForAR(weapon);
-		case WeaponType.SMG: return getMasterChallengeForAR(weapon);
-		case WeaponType.BattleRifle: return getMasterChallengeForAR(weapon);
+		case WeaponType.BattleRifle: return getMasterChallengeForBR(weapon);
+		case WeaponType.SMG: return getMasterChallengeForSMG(weapon);
+		case WeaponType.Shotgun: return getMasterChallengeForShotgun(weapon);
+		case WeaponType.LMG: return getMasterChallengeForLMG(weapon);
+		case WeaponType.Marksman: return getMasterChallengeForMarksman(weapon);
+		case WeaponType.Sniper: return getMasterChallengeForSniper(weapon);
+		case WeaponType.Handgun: return getMasterChallengeForHangun(weapon);
 		default: return [];
 	}
 }
@@ -140,6 +157,8 @@ function CreateWeaponTables() {
 				weaponsTable.appendChild(weaponRowSpacer);
 			})
 		})
+
+		//
 	}
 };
 
