@@ -1,8 +1,10 @@
 import { getBaseChallengeForAR, getMasterChallengeForAR } from './challenges/challengesAR';
 import { getBaseChallengeForBR, getMasterChallengeForBR } from './challenges/challengesBR';
 import { getBaseChallengeForHangun, getMasterChallengeForHangun } from './challenges/challengesHandgun';
+import { getBaseChallengeForLauncher, getMasterChallengeForLauncher } from './challenges/challengesLauncher';
 import { getBaseChallengeForLMG, getMasterChallengeForLMG } from './challenges/challengesLMG';
 import { getBaseChallengeForMarksman, getMasterChallengeForMarksman } from './challenges/challengesMarksman';
+import { getBaseChallengeForMelee, getMasterChallengeForMelee } from './challenges/challengesMelee';
 import { getBaseChallengeForShotgun, getMasterChallengeForShotgun } from './challenges/challengesShotgun';
 import { getBaseChallengeForSMG, getMasterChallengeForSMG } from './challenges/challengesSMG';
 import { getBaseChallengeForSniper, getMasterChallengeForSniper } from './challenges/challengesSniper';
@@ -30,6 +32,8 @@ function getBaseChallengesByWeaponType(type: WeaponType, weapon: Weapon): Challe
 		case WeaponType.Marksman: return getBaseChallengeForMarksman(weapon);
 		case WeaponType.Sniper: return getBaseChallengeForSniper(weapon);
 		case WeaponType.Handgun: return getBaseChallengeForHangun(weapon);
+		case WeaponType.Launcher: return getBaseChallengeForLauncher(weapon);
+		case WeaponType.Melee: return getBaseChallengeForMelee(weapon);
 		default: return [];
 	}
 }
@@ -44,6 +48,8 @@ function getMasterChallengesByWeaponType(type: WeaponType, weapon: Weapon): Chal
 		case WeaponType.Marksman: return getMasterChallengeForMarksman(weapon);
 		case WeaponType.Sniper: return getMasterChallengeForSniper(weapon);
 		case WeaponType.Handgun: return getMasterChallengeForHangun(weapon);
+		case WeaponType.Launcher: return getMasterChallengeForLauncher(weapon);
+		case WeaponType.Melee: return getMasterChallengeForMelee(weapon);
 		default: return [];
 	}
 }
@@ -104,7 +110,7 @@ function CreateWeaponTables() {
 
 			category.weapons.forEach(weapon => {
 				weapon.challenges = getChallengesByWeaponType(category.type, weapon);
-				getChallengesByWeaponType(category.type, weapon);
+				//getChallengesByWeaponType(category.type, weapon);
 
 				var weaponRow = document.createElement('tr');
 				var weaponName = document.createElement('td');
@@ -129,6 +135,9 @@ function CreateWeaponTables() {
 				})
 
 				var MasterWeaponRow = document.createElement('tr');
+				var masterWeaponChallengePrefix = document.createElement('td');
+				MasterWeaponRow.appendChild(masterWeaponChallengePrefix)
+
 
 				weapon.challenges.masterChallenges.forEach(challenge => {
 					var masterWeaponChallengeData = document.createElement('td');
@@ -144,9 +153,7 @@ function CreateWeaponTables() {
 					masterWeaponChallenge.addEventListener('click', function() {
 						btnClicker(weapon, challenge, true);
 					})
-					var masterWeaponChallengeDataSpacer = document.createElement('td');
 
-					MasterWeaponRow.appendChild(masterWeaponChallengeDataSpacer);
 					MasterWeaponRow.appendChild(masterWeaponChallengeData);
 
 				})
