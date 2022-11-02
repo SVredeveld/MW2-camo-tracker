@@ -5,9 +5,36 @@
     <!-- <link rel="stylesheet" href="../css/style.css"> -->
 </head>
 <body>
-	<p id="hello-world"></p>
-	<div id="app"></div>
-	<button id="coolbutton"></button>asdf asdfasd asdfasdfasd
-	<script type="text/javascript" src="./bundle.js"></script> 
+	<h1 class="header-text">MW<span>II</span> Camo Tracker</h1>
+	<div id="navbar">
+		<a href="#weapons-list-ar">Assault Rifles</a>
+		<a href="#weapons-list-br">Battle Rifles</a>
+		<a href="#weapons-list-smg">Submachine guns</a>
+		<a href="#weapons-list-shot">Shotguns</a>
+		<a href="#weapons-list-lmg">Light Machine Guns</a>
+		<a href="#weapons-list-marks">Marksman Rifles</a>
+		<a href="#weapons-list-sniper">Sniper Rifles</a>
+		<a href="#weapons-list-gun">Handguns</a>
+		<a href="#weapons-list-launcher">Launchers</a>
+		<a href="#weapons-list-melee">Melee</a>
+	</div>
+
+	<div id="weapons-table-container">
+
+	</div><script>
+		window.onscroll = function() {myFunction()};
+		
+		var navbar = document.getElementById("navbar");
+		var sticky = navbar.offsetTop;
+		
+		function myFunction() {
+		  if (window.pageYOffset >= sticky) {
+			navbar.classList.add("sticky")
+		  } else {
+			navbar.classList.remove("sticky");
+		  }
+		}
+		</script>
+
 </body>
 </html>
