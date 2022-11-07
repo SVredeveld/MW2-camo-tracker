@@ -1,4 +1,6 @@
-import { Weapon, WeaponType_AR } from "../types"
+import { MasteryType, Weapon, WeaponType_AR } from "../types"
+import { getGoldChallenge, getPolyatomicChallengeForGuns, getPlatinumChallengeForGuns } from './challengesShared';
+
 
 export function getBaseChallengeForAR(weapon: Weapon) {
 	switch(weapon.name) {
@@ -211,14 +213,22 @@ export function getMasterChallengeForAR(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}
@@ -226,98 +236,154 @@ export function getMasterChallengeForAR(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		case WeaponType_AR.Kastov762: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		case WeaponType_AR.Lachmann556: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		case WeaponType_AR.STB556: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat	
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		case WeaponType_AR.M16: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		case WeaponType_AR.Kastov74u: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		case WeaponType_AR.Kastov545: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		default: {

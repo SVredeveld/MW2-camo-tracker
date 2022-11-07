@@ -9,7 +9,7 @@ import { getBaseChallengeForShotgun, getMasterChallengeForShotgun } from './chal
 import { getBaseChallengeForSMG, getMasterChallengeForSMG } from './challenges/challengesSMG';
 import { getBaseChallengeForSniper, getMasterChallengeForSniper } from './challenges/challengesSniper';
 import './style.scss';
-import { Challenge, ChallengeProgress, Weapon, WeaponType, WeaponType_BattleRifle, WeaponType_LMG } from './types';
+import { Challenge, ChallengeProgress, MasteryType, Weapon, WeaponCategory, WeaponType, WeaponType_BattleRifle, WeaponType_LMG } from './types';
 import { GetweaponCategories } from './weaponsFactory';
 
 
@@ -63,14 +63,18 @@ function checkButton(btn: HTMLElement) {
 			btn.style.opacity = '70%';
 }
 
+var allGoldChallenges = 0;
+
 function setButtonColors(btn: HTMLElement, challenge: Challenge, mastery: boolean) {
 	if(btn?.style) {
 		if(challenge.completed == true)
 		 {
-			 console.log(challenge)
 			 checkButton(btn);
 			 var background = mastery ? '#2c2c00' : '#272727'; 
 			 btn.style.backgroundColor = background; 
+			 if(challenge.mastery == MasteryType.Gold) {
+				allGoldChallenges += 1;
+			 }
 
 		 } 
 		 else { 				
@@ -79,7 +83,11 @@ function setButtonColors(btn: HTMLElement, challenge: Challenge, mastery: boolea
 			 btn.style.backgroundColor = background; 
 			 btn.style.color = '#F1F1F1'; 
 			 btn.style.opacity = '100%';
+			 if(challenge.mastery == MasteryType.Gold) {
+				allGoldChallenges -= 1;
+			 }
 		 }
+		
 	 }
 }
 
@@ -89,15 +97,64 @@ function btnClicker(weapon: Weapon, challenge: Challenge, mastery: boolean) {
 	 var localKeyString = weapon.name + '-' + challenge.id;
 	 window.localStorage.setItem(localKeyString, challenge.completed.toString())
 	setButtonColors(btn, challenge, mastery);
-	
+	//collectData(weapon)
+	//setMasterChallengesPrefix(weapon)
+
+
+}
+
+function collectData(weapon: Weapon) {
+	var CompletedGoldPerWeapon = weapon.challenges?.masterChallenges.filter( (challenge) => {
+		return challenge.mastery === MasteryType.Gold && challenge.completed;
+	}).length;
+
+
+
+	const numberOfGoldWeapons = document.getElementById("tracker")!;
+	if(numberOfGoldWeapons){
+		numberOfGoldWeapons.textContent = CompletedGoldPerWeapon?.toString() || null;
+	}
+
+}
+
+// function setMasterChallengesPrefix(weapon: Weapon) {
+// 		weapon.challenges?.masterChallenges.forEach(challenge => {
+// 			console.log(challenge.id)
+// 		});
+// }
+
+function headerTracker(category: WeaponCategory) {
+	const text = document.getElementById("tracker")!;
+	var numberOfWeapons = 0;
+	category.weapons.forEach(element => {
+		console.log(element)
+	});
+
+	for(var weapon of category.weapons) {
+		numberOfWeapons += 1;
+		console.log(numberOfWeapons)
+	}
+	return numberOfWeapons;
+
+}
+
+function numberOfCompletedMastery() {
+
 }
  
 function CreateWeaponTables() {
 	const weaponsTableContainer = document.getElementById("weapons-table-container");
+	var totalNumberOfWeapons = 0;
 
 	if(weaponsTableContainer) {
 		const weaponCategory = GetweaponCategories();
 		weaponCategory.forEach(category => {
+			var weaponsInCategory = headerTracker(category);
+			totalNumberOfWeapons += weaponsInCategory;
+
+			//const numberOfWeapons = document.getElementById("tracker")!;
+			//numberOfWeapons.textContent = allGoldChallenges.toString();
+			//numberOfWeapons.textContent += totalNumberOfWeapons.toString();
 
 			var headerText = document.createElement('h3');
 			headerText.textContent = category.name;
@@ -110,7 +167,6 @@ function CreateWeaponTables() {
 
 			category.weapons.forEach(weapon => {
 				weapon.challenges = getChallengesByWeaponType(category.type, weapon);
-				//getChallengesByWeaponType(category.type, weapon);
 
 				var weaponRow = document.createElement('tr');
 				var weaponName = document.createElement('td');
@@ -136,6 +192,7 @@ function CreateWeaponTables() {
 
 				var MasterWeaponRow = document.createElement('tr');
 				var masterWeaponChallengePrefix = document.createElement('td');
+				masterWeaponChallengePrefix.id = 'masterWeaponChallengePrefix';
 				MasterWeaponRow.appendChild(masterWeaponChallengePrefix)
 
 
@@ -167,6 +224,7 @@ function CreateWeaponTables() {
 
 		//
 	}
+
 };
 
 CreateWeaponTables();

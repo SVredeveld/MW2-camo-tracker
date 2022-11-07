@@ -1,4 +1,5 @@
 import { Weapon, WeaponType_BattleRifle } from "../types"
+import { getPolyatomicChallengeForGuns } from "./challengesShared"
 
 export function getBaseChallengeForBR(weapon: Weapon) {
 	switch(weapon.name) {
@@ -125,6 +126,11 @@ export function getMasterChallengeForBR(weapon: Weapon) {
 					description: "PLAT",
 					completed: getCompleted(weapon, 7),
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+				}
 
 			]
 		}
