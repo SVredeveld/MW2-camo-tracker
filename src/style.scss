@@ -88,8 +88,16 @@ td {
 		background-color: #454545;
 		color: $main-text;
 		&-mastery {
-			background-color: #4e4e00;
-
+			&-gold {
+				background-color: #ffc107a1;
+			}
+			&-plat {
+				background-color: #e5e5e5e3;
+				color: $body-color!important;
+			}
+			&-poly {
+				background-color: #8500d98c;
+			}
 		}
 	}
 }
