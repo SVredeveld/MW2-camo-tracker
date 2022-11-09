@@ -1,5 +1,8 @@
 import { MasteryType, Weapon, WeaponType_AR } from "../types"
-import { getGoldChallenge, getPolyatomicChallengeForGuns, getPlatinumChallengeForGuns } from './challengesShared';
+import { getGoldChallenge, 
+	getPolyatomicChallengeForGuns,
+	getPlatinumChallengeForGuns, 
+	getStandardKills } from './challengesShared';
 
 
 export function getBaseChallengeForAR(weapon: Weapon) {
@@ -8,7 +11,7 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				},
 				{
@@ -32,22 +35,22 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				}, 
 				{
 					id: 1,
-					description: "???",
+					description: "10 Double kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "50 ADS kills",
 					completed: getCompleted(weapon, 2),
 				}, 
 				{
 					id: 3,
-					description: "???",
+					description: "15 Hipfire kills",
 					completed: getCompleted(weapon, 3),
 				}, 
 			]
@@ -56,22 +59,22 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				}, 
 				{
 					id: 1,
-					description: "???",
+					description: "20 Mounted kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "50 ADS kills",
 					completed: getCompleted(weapon, 2),
 				}, 
 				{
 					id: 3,
-					description: "???",
+					description: "15 Behind kills",
 					completed: getCompleted(weapon, 3),
 				}, 
 			]
@@ -80,22 +83,22 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				}, 
 				{
 					id: 1,
-					description: "???",
+					description: "10 Double kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "50 kills with suppressor",
 					completed: getCompleted(weapon, 2),
 				}, 
 				{
 					id: 3,
-					description: "???",
+					description: "10 Hipfire kills",
 					completed: getCompleted(weapon, 3),
 				}, 
 			]
@@ -104,22 +107,22 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				}, 
 				{
 					id: 1,
-					description: "???",
+					description: "20 Mounted kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "10 Double kills",
 					completed: getCompleted(weapon, 2),
 				}, 
 				{
 					id: 3,
-					description: "???",
+					description: "30 Crouch kills",
 					completed: getCompleted(weapon, 3),
 				}, 
 			]
@@ -128,22 +131,22 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				}, 
 				{
 					id: 1,
-					description: "???",
+					description: "10 Double kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "30 Crouch kills",
 					completed: getCompleted(weapon, 2),
 				}, 
 				{
 					id: 3,
-					description: "???",
+					description: "20 Mounted kills",
 					completed: getCompleted(weapon, 3),
 				}, 
 			]
@@ -152,22 +155,22 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				}, 
 				{
 					id: 1,
-					description: "???",
+					description: "15 Point Blank kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "10 Double kills",
 					completed: getCompleted(weapon, 2),
 				}, 
 				{
 					id: 3,
-					description: "???",
+					description: "30 Crouch kills",
 					completed: getCompleted(weapon, 3),
 				}, 
 			]
@@ -175,22 +178,22 @@ export function getBaseChallengeForAR(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				}, 
 				{
 					id: 1,
-					description: "???",
+					description: "10 Hipfire kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "50 ADS kills",
 					completed: getCompleted(weapon, 2),
 				}, 
 				{
 					id: 3,
-					description: "???",
+					description: "50 Suppressor kills",
 					completed: getCompleted(weapon, 3),
 				}, 
 			]
@@ -229,7 +232,6 @@ export function getMasterChallengeForAR(weapon: Weapon) {
 					completed: getCompleted(weapon, 8),
 					mastery: MasteryType.Poly
 				}
-
 			]
 		}
 		case WeaponType_AR.TAQ_56: {
