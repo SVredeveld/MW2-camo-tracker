@@ -1,4 +1,5 @@
-import { Weapon, WeaponType_Shotgun } from "../types"
+import { MasteryType, Weapon, WeaponType_Shotgun } from "../types"
+import { getGoldChallenge, getPlatinumChallengeForGuns, getPolyatomicChallengeForGuns, getStandardKills } from "./challengesShared"
 
 export function getBaseChallengeForShotgun(weapon: Weapon) {
 	switch(weapon.name) {
@@ -6,22 +7,22 @@ export function getBaseChallengeForShotgun(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "40 Suppressor Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "25 One Shot Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "20 Mounted Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -30,22 +31,22 @@ export function getBaseChallengeForShotgun(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "15 Hipfire Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "25 Prone Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "30 ADS Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -54,22 +55,22 @@ export function getBaseChallengeForShotgun(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "15 Hipfire Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "10 Double Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "20 One Shot Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -78,7 +79,7 @@ export function getBaseChallengeForShotgun(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				},
 				{
@@ -117,60 +118,88 @@ export function getMasterChallengeForShotgun(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(20),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
-
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		case WeaponType_Shotgun.Expedite_12: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(20),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
-
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		case WeaponType_Shotgun.Bryson_800: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(20),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
-
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		case WeaponType_Shotgun.Bryson_890: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(20),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
-
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 

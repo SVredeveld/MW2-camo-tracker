@@ -1,4 +1,5 @@
-import { Weapon, WeaponType_Marksman } from "../types"
+import { MasteryType, Weapon, WeaponType_Marksman } from "../types"
+import { getGoldChallenge, getPlatinumChallengeForGuns, getPolyatomicChallengeForGuns, getStandardKills } from "./challengesShared"
 
 export function getBaseChallengeForMarksman(weapon: Weapon) {
 	switch(weapon.name) {
@@ -6,22 +7,22 @@ export function getBaseChallengeForMarksman(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "30 Crouch Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "20 Mounted Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "10 Double Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -30,22 +31,22 @@ export function getBaseChallengeForMarksman(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "50 ADS Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "30 Prone Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "20 Mounted Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -54,22 +55,22 @@ export function getBaseChallengeForMarksman(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "15 Behind Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "25 One Shot Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "10 Point Blank Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -78,22 +79,22 @@ export function getBaseChallengeForMarksman(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "20 Mounted Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "20 One Shot Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "30 Crouched Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -102,22 +103,22 @@ export function getBaseChallengeForMarksman(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "25 One Shot Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "10 Double Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "10 Mounted Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -126,22 +127,22 @@ export function getBaseChallengeForMarksman(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "20 Mounted KIlls",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "5 Hipfire Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "10 Double Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -165,90 +166,132 @@ export function getMasterChallengeForMarksman(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
-
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		case WeaponType_Marksman.SPR_208: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
-
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}		
 		case WeaponType_Marksman.Lockwood_MK2: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
-
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		case WeaponType_Marksman.LMS: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
-
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		case WeaponType_Marksman.SAB_50: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
-
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 		case WeaponType_Marksman.TAQ_M: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
-
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
 

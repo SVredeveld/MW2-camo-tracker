@@ -1,4 +1,5 @@
-import { Weapon, WeaponType_Handgun } from "../types"
+import { MasteryType, Weapon, WeaponType_Handgun } from "../types"
+import { getGoldChallenge, getPlatinumChallengeForGuns, getPolyatomicChallengeForGuns, getStandardKills } from "./challengesShared"
 
 export function getBaseChallengeForHangun(weapon: Weapon) {
 	switch(weapon.name) {
@@ -6,22 +7,22 @@ export function getBaseChallengeForHangun(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "40 Suppressor Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "5 Double Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "10 Point Blank Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -30,22 +31,22 @@ export function getBaseChallengeForHangun(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "5 Double Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "15 Mounted Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "40 Kills with Akimbo",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -54,22 +55,22 @@ export function getBaseChallengeForHangun(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(30),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "25 ADS Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "10 Hipfire Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "40 Kills with Akimbo",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -78,22 +79,22 @@ export function getBaseChallengeForHangun(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "30 ADS Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "10 Point Blank Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "30 Kills with Akimbo",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -102,22 +103,22 @@ export function getBaseChallengeForHangun(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "10 Hipfire Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "10 Double Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "40 Kills with Akimbo",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -141,14 +142,22 @@ export function getMasterChallengeForHangun(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(5, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(15),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}
@@ -156,14 +165,22 @@ export function getMasterChallengeForHangun(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(5, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(15),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}
@@ -171,14 +188,22 @@ export function getMasterChallengeForHangun(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(5, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(15),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}
@@ -186,14 +211,22 @@ export function getMasterChallengeForHangun(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(5, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(15),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}
@@ -201,14 +234,22 @@ export function getMasterChallengeForHangun(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(5, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(15),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}
