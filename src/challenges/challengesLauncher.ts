@@ -1,4 +1,5 @@
-import { Weapon, WeaponType_Launcher } from "../types"
+import { MasteryType, Weapon, WeaponType_Launcher } from "../types"
+import { getGoldChallenge, getPlatinumChallengeForLaunchers, getPolyatomicChallengeForLaunchers, getStandardKills } from "./challengesShared"
 
 export function getBaseChallengeForLauncher(weapon: Weapon) {
 	switch(weapon.name) {
@@ -6,7 +7,7 @@ export function getBaseChallengeForLauncher(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				}
 			]
@@ -15,7 +16,7 @@ export function getBaseChallengeForLauncher(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				}
 			]
@@ -24,7 +25,7 @@ export function getBaseChallengeForLauncher(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				}
 			]
@@ -33,7 +34,7 @@ export function getBaseChallengeForLauncher(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				}
 			]
@@ -56,14 +57,22 @@ export function getMasterChallengeForLauncher(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(5, 2),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForLaunchers(15),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForLaunchers(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}
@@ -71,14 +80,22 @@ export function getMasterChallengeForLauncher(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(5, 2),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForLaunchers(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForLaunchers(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}
@@ -86,14 +103,22 @@ export function getMasterChallengeForLauncher(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(5, 2),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForLaunchers(10),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForLaunchers(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}
@@ -101,14 +126,22 @@ export function getMasterChallengeForLauncher(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(5, 2),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForLaunchers(10),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForLaunchers(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}

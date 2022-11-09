@@ -81,6 +81,10 @@ export const GetweaponCategories = (): WeaponCategory[] => [
 			{
 				name: WeaponType_SMG.VEL_46,
 				completed: false
+			},			
+			{
+				name: WeaponType_SMG.MX9,
+				completed: false
 			},
 			{
 				name: WeaponType_SMG.Lachmann_sub,

@@ -9,6 +9,7 @@ export interface Challenge {
 	id?: number;
 	description: string;
 	completed: boolean;
+	mastery?: MasteryType;
 }
 
 export interface WeaponCategory {
@@ -21,6 +22,13 @@ export interface Weapon {
 	name: string;
 	challenges?: ChallengeProgress;
 	completed: boolean;
+}
+
+export enum MasteryType {
+	Gold = "Gold",
+	Plat = "Platinum",
+	Poly = "Polyatomic",
+	Orion = "Orion"
 }
 
 export enum WeaponType {

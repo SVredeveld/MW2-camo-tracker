@@ -1,4 +1,5 @@
-import { Weapon, WeaponType_Melee } from "../types"
+import { MasteryType, Weapon, WeaponType_Melee } from "../types"
+import { getGoldChallenge, getPlatinumChallengeForMelee, getPolyatomicChallengeForMelee, getStandardKills } from "./challengesShared"
 
 export function getBaseChallengeForMelee(weapon: Weapon) {
 	switch(weapon.name) {
@@ -6,7 +7,7 @@ export function getBaseChallengeForMelee(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(40),
 					completed: getCompleted(weapon, 0),
 				}
 			]
@@ -15,7 +16,7 @@ export function getBaseChallengeForMelee(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				}
 			]
@@ -39,30 +40,44 @@ export function getMasterChallengeForMelee(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 2),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForMelee(),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
-
+				{
+					id: 8,
+					description: getPolyatomicChallengeForMelee(10),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
         case WeaponType_Melee.Combat_Knife: {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 2),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForMelee(),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
-
+				{
+					id: 8,
+					description: getPolyatomicChallengeForMelee(20),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 			]
 		}
     

@@ -1,4 +1,5 @@
-import { Weapon, WeaponType_BattleRifle } from "../types"
+import { MasteryType, Weapon, WeaponType_BattleRifle } from "../types"
+import { getGoldChallenge, getPlatinumChallengeForGuns, getPolyatomicChallengeForGuns, getStandardKills } from "./challengesShared"
 
 export function getBaseChallengeForBR(weapon: Weapon) {
 	switch(weapon.name) {
@@ -6,22 +7,22 @@ export function getBaseChallengeForBR(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "50 ADS Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "20 Mounted Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "10 Double Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -30,22 +31,22 @@ export function getBaseChallengeForBR(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "???", 
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "50 ADS Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "10 Double Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "30 Prone Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -54,22 +55,22 @@ export function getBaseChallengeForBR(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "15 Point Blank Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "15 Behind KIlls",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "20 Mounted Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -78,22 +79,22 @@ export function getBaseChallengeForBR(weapon: Weapon) {
 			return [
 				{
 					id: 0,
-					description: "Get x kills",
+					description: getStandardKills(50),
 					completed: getCompleted(weapon, 0),
 				},
 				{
 					id: 1,
-					description: "???",
+					description: "10 Double Kills",
 					completed: getCompleted(weapon, 1),
 				}, 
 				{
 					id: 2,
-					description: "???",
+					description: "50 Suppressor Kills",
 					completed: getCompleted(weapon, 2),
 				},  
 				{
 					id: 3,
-					description: "???",
+					description: "30 Crouch Kills",
 					completed: getCompleted(weapon, 3),
 				},  
 			]
@@ -117,14 +118,22 @@ export function getMasterChallengeForBR(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}
@@ -132,14 +141,22 @@ export function getMasterChallengeForBR(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}
@@ -147,14 +164,22 @@ export function getMasterChallengeForBR(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}
@@ -162,14 +187,22 @@ export function getMasterChallengeForBR(weapon: Weapon) {
 			return [
 				{
 					id: 6,
-					description: "GOLD",
+					description: getGoldChallenge(10, 3),
 					completed: getCompleted(weapon, 6),
+					mastery: MasteryType.Gold
 				},
 				{
 					id: 7,
-					description: "PLAT",
+					description: getPlatinumChallengeForGuns(25),
 					completed: getCompleted(weapon, 7),
+					mastery: MasteryType.Plat
 				},
+				{
+					id: 8,
+					description: getPolyatomicChallengeForGuns(),
+					completed: getCompleted(weapon, 8),
+					mastery: MasteryType.Poly
+				}
 
 			]
 		}

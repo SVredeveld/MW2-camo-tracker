@@ -9,7 +9,7 @@ import { getBaseChallengeForShotgun, getMasterChallengeForShotgun } from './chal
 import { getBaseChallengeForSMG, getMasterChallengeForSMG } from './challenges/challengesSMG';
 import { getBaseChallengeForSniper, getMasterChallengeForSniper } from './challenges/challengesSniper';
 import './style.scss';
-import { Challenge, ChallengeProgress, Weapon, WeaponType, WeaponType_BattleRifle, WeaponType_LMG } from './types';
+import { Challenge, ChallengeProgress, MasteryType, Weapon, WeaponCategory, WeaponType, WeaponType_BattleRifle, WeaponType_LMG } from './types';
 import { GetweaponCategories } from './weaponsFactory';
 
 
@@ -63,54 +63,86 @@ function checkButton(btn: HTMLElement) {
 			btn.style.opacity = '70%';
 }
 
-function setButtonColors(btn: HTMLElement, challenge: Challenge, mastery: boolean) {
+function setButtonColors(btn: HTMLElement, challenge: Challenge) {
 	if(btn?.style) {
 		if(challenge.completed == true)
 		 {
-			 console.log(challenge)
 			 checkButton(btn);
-			 var background = mastery ? '#2c2c00' : '#272727'; 
-			 btn.style.backgroundColor = background; 
+			 //var background = !mastery ? '#2c2c00' : '#272727'; 
 
+			 var background = challenge.mastery == null ? '#272727' :
+						challenge.mastery == MasteryType.Gold ? '#ffc1077a' :
+						challenge.mastery == MasteryType.Plat ? '#e5e5e5a6' : 
+						challenge.mastery == MasteryType.Poly ? '#8500d963' :
+						'#2c2c00';
+			 btn.style.backgroundColor = background; 
 		 } 
 		 else { 				
 			 btn.style.background = 'none';
-			 var background = mastery ? '#4e4e00': '#454545' ; 
+			 //var background = mastery ? '#4e4e00': '#454545' ; 
+			 var background = challenge.mastery == null ? '#454545' :
+			 challenge.mastery == MasteryType.Gold ? '#ffc107a1' :
+			 challenge.mastery == MasteryType.Plat ? '#e5e5e5e3' : 
+			 challenge.mastery == MasteryType.Poly ? '#8500d98c' :
+			 '#2c2c00';
 			 btn.style.backgroundColor = background; 
-			 btn.style.color = '#F1F1F1'; 
+			 //btn.style.color = '#F1F1F1'; 
 			 btn.style.opacity = '100%';
 		 }
+		
 	 }
 }
 
-function btnClicker(weapon: Weapon, challenge: Challenge, mastery: boolean) {
+function btnClicker(weapon: Weapon, challenge: Challenge, category: WeaponCategory) {
 	 var btn = document.getElementById(weapon.name + '-' + challenge.id)!
 	 challenge.completed = !challenge.completed;
 	 var localKeyString = weapon.name + '-' + challenge.id;
 	 window.localStorage.setItem(localKeyString, challenge.completed.toString())
-	setButtonColors(btn, challenge, mastery);
-	
+	setButtonColors(btn, challenge);
+	trackGoldChallengesCompletedPerCategory(category);
+	updateWeaponsCounter(trackGoldChallengesCompletedPerCategory(category), getWeaponsPerCategory(category), category);
 }
- 
+
+function getWeaponsPerCategory(category: WeaponCategory) {
+	var numberOfWeapons = 0;
+
+	category.weapons.forEach(element => {
+		numberOfWeapons += 1;
+	});
+	return numberOfWeapons;
+
+}
+
+function trackGoldChallengesCompletedPerCategory(category: WeaponCategory) {
+	var completed = category.weapons.filter((weapon) => {
+		return weapon.challenges?.masterChallenges.filter((master) => {
+			return master.mastery == MasteryType.Gold && master.completed;
+		}).length
+	});
+	return completed.length;
+}
+
 function CreateWeaponTables() {
 	const weaponsTableContainer = document.getElementById("weapons-table-container");
 
 	if(weaponsTableContainer) {
 		const weaponCategory = GetweaponCategories();
 		weaponCategory.forEach(category => {
-
 			var headerText = document.createElement('h3');
-			headerText.textContent = category.name;
+			var masteryCounter = document.createElement('p');
 			headerText.id = "weapons-list-" + category.type;
 			headerText.className = "content";
+			masteryCounter.id = "masteryCounter" + category.type;
+			masteryCounter.className = "mastery-counter";
+
 			weaponsTableContainer.appendChild(headerText);
+			weaponsTableContainer.appendChild(masteryCounter);
 
 			var weaponsTable = document.createElement('table');
 			weaponsTableContainer.appendChild(weaponsTable)
 
 			category.weapons.forEach(weapon => {
 				weapon.challenges = getChallengesByWeaponType(category.type, weapon);
-				//getChallengesByWeaponType(category.type, weapon);
 
 				var weaponRow = document.createElement('tr');
 				var weaponName = document.createElement('td');
@@ -125,10 +157,10 @@ function CreateWeaponTables() {
 					baseWeaponChallenge.className = 'btn';
 					baseWeaponChallenge.id = weapon.name + '-' + challenge.id;
 					baseWeaponChallengeData.appendChild(baseWeaponChallenge);
-					setButtonColors(baseWeaponChallenge, challenge, false)
+					setButtonColors(baseWeaponChallenge, challenge)
 
 					baseWeaponChallenge.addEventListener('click', function() {
-						btnClicker(weapon, challenge, false);
+						btnClicker(weapon, challenge, category);
 					})
 
 					weaponRow.appendChild(baseWeaponChallengeData);
@@ -136,6 +168,7 @@ function CreateWeaponTables() {
 
 				var MasterWeaponRow = document.createElement('tr');
 				var masterWeaponChallengePrefix = document.createElement('td');
+				masterWeaponChallengePrefix.id = 'masterWeaponChallengePrefix';
 				MasterWeaponRow.appendChild(masterWeaponChallengePrefix)
 
 
@@ -144,14 +177,24 @@ function CreateWeaponTables() {
 					var masterWeaponChallenge = document.createElement('button');
 					masterWeaponChallenge.textContent = challenge.description;
 					masterWeaponChallenge.className = 'btn btn-mastery';
+
+					if(challenge.mastery == MasteryType.Gold) {
+						masterWeaponChallenge.className += '-gold'
+					}
+					if(challenge.mastery == MasteryType.Plat) {
+						masterWeaponChallenge.className += '-plat'
+					}					
+					if(challenge.mastery == MasteryType.Poly) {
+						masterWeaponChallenge.className += '-poly'
+					}
 					masterWeaponChallenge.id = weapon.name + '-' + challenge.id;
 
 					masterWeaponChallengeData.appendChild(masterWeaponChallenge);
-					setButtonColors(masterWeaponChallenge, challenge, true)
+					setButtonColors(masterWeaponChallenge, challenge)
 
 
 					masterWeaponChallenge.addEventListener('click', function() {
-						btnClicker(weapon, challenge, true);
+						btnClicker(weapon, challenge, category);
 					})
 
 					MasterWeaponRow.appendChild(masterWeaponChallengeData);
@@ -163,10 +206,28 @@ function CreateWeaponTables() {
 				var weaponRowSpacer = document.createElement('td');
 				weaponsTable.appendChild(weaponRowSpacer);
 			})
+
+			//Counter voor de weapons
+			updateWeaponsCounter(trackGoldChallengesCompletedPerCategory(category), getWeaponsPerCategory(category), category);
+
 		})
 
 		//
 	}
+
 };
 
+function updateWeaponsCounter(challengesCompleted: number, weaponsInCategory: number, category: WeaponCategory) {
+	var headerText = document.getElementById("weapons-list-" + category.type);
+	var masteryCounterText = document.getElementById("masteryCounter" + category.type);
+	var weaponsCounter = `${challengesCompleted.toString()} / ${weaponsInCategory.toString()}`;
+	console.log(masteryCounterText)
+	if(headerText && masteryCounterText) {
+		headerText.textContent = category.name;
+		masteryCounterText.textContent = `${weaponsCounter} Gold`;}
+
+}
+
 CreateWeaponTables();
+
+
