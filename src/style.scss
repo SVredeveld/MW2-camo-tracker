@@ -26,27 +26,31 @@ body {
 	z-index: 10;
   }
   
-  /* Navbar links */
-  #navbar a {
-	color: #f2f2f2;
-	text-align: center;
-	padding: 14px;
-	text-decoration: none;
-	&:hover {
-		background-color: #454545;
-	}
-  }
-  
-  /* The sticky class is added to the navbar with JS when it reaches its scroll position */
-  .sticky {
-	position: sticky;
-	top: 0;
-	width: 100%;
-  }
+/* Navbar links */
+#navbar a {
+color: #f2f2f2;
+text-align: center;
+padding: 14px;
+text-decoration: none;
+&:hover {
+	background-color: #454545;
+}
+}
 
-  .content {
-	scroll-margin-top: 5em;
-  }
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+position: sticky;
+top: 0;
+width: 100%;
+}
+
+.content {
+scroll-margin-top: 5em;
+}
+
+.mastery-counter {
+text-align: center;
+}
 /*--------------------*\
 	Weapon tables
 \*--------------------*/

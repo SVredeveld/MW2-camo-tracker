@@ -99,21 +99,8 @@ function btnClicker(weapon: Weapon, challenge: Challenge, category: WeaponCatego
 	 var localKeyString = weapon.name + '-' + challenge.id;
 	 window.localStorage.setItem(localKeyString, challenge.completed.toString())
 	setButtonColors(btn, challenge);
-	collectData(weapon);
 	trackGoldChallengesCompletedPerCategory(category);
 	updateWeaponsCounter(trackGoldChallengesCompletedPerCategory(category), getWeaponsPerCategory(category), category);
-}
-
-function collectData(weapon: Weapon) {
-	var CompletedGoldPerWeapon = weapon.challenges?.masterChallenges.filter( (challenge) => {
-		return challenge.mastery === MasteryType.Gold && challenge.completed;
-	}).length;
-
-	const numberOfGoldWeapons = document.getElementById("tracker")!;
-	if(numberOfGoldWeapons){
-		numberOfGoldWeapons.textContent = CompletedGoldPerWeapon?.toString() || null;
-	}
-
 }
 
 function getWeaponsPerCategory(category: WeaponCategory) {
@@ -132,21 +119,24 @@ function trackGoldChallengesCompletedPerCategory(category: WeaponCategory) {
 			return master.mastery == MasteryType.Gold && master.completed;
 		}).length
 	});
-	console.log(completed.length)
 	return completed.length;
 }
 
 function CreateWeaponTables() {
 	const weaponsTableContainer = document.getElementById("weapons-table-container");
-	var totalNumberOfWeapons = 0;
 
 	if(weaponsTableContainer) {
 		const weaponCategory = GetweaponCategories();
 		weaponCategory.forEach(category => {
 			var headerText = document.createElement('h3');
+			var masteryCounter = document.createElement('p');
 			headerText.id = "weapons-list-" + category.type;
 			headerText.className = "content";
+			masteryCounter.id = "masteryCounter" + category.type;
+			masteryCounter.className = "mastery-counter";
+
 			weaponsTableContainer.appendChild(headerText);
+			weaponsTableContainer.appendChild(masteryCounter);
 
 			var weaponsTable = document.createElement('table');
 			weaponsTableContainer.appendChild(weaponsTable)
@@ -218,8 +208,6 @@ function CreateWeaponTables() {
 			})
 
 			//Counter voor de weapons
-			var weaponsInCategory = getWeaponsPerCategory(category);
-		  var challengesCompleted = trackGoldChallengesCompletedPerCategory(category);
 			updateWeaponsCounter(trackGoldChallengesCompletedPerCategory(category), getWeaponsPerCategory(category), category);
 
 		})
@@ -231,11 +219,12 @@ function CreateWeaponTables() {
 
 function updateWeaponsCounter(challengesCompleted: number, weaponsInCategory: number, category: WeaponCategory) {
 	var headerText = document.getElementById("weapons-list-" + category.type);
-	var weaponsCounter = ` ${challengesCompleted.toString()} / ${weaponsInCategory.toString()}`;
-	console.log(headerText)
-	if(headerText) {
+	var masteryCounterText = document.getElementById("masteryCounter" + category.type);
+	var weaponsCounter = `${challengesCompleted.toString()} / ${weaponsInCategory.toString()}`;
+	console.log(masteryCounterText)
+	if(headerText && masteryCounterText) {
 		headerText.textContent = category.name;
-		headerText.textContent += weaponsCounter;}
+		masteryCounterText.textContent = `${weaponsCounter} Gold`;}
 
 }
 
